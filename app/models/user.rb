@@ -23,4 +23,14 @@ class User < ActiveRecord::Base
     role.downcase.to_sym == authorized_role
   end
 
+    def self.authenticate(email,password)
+    find_by_email(email).try(:authenticate, password)
+  end
+
+
+  def role?(authorized_role)
+    return false if role.nil?
+    role.to_sym == authorized_role
+  end
+
 end
