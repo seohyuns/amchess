@@ -12,6 +12,7 @@ class CurriculumsController < ApplicationController
 
   def new
     @curriculum = Curriculum.new
+    authorize! :new, @curriculum
   end
 
   def edit
@@ -34,6 +35,8 @@ class CurriculumsController < ApplicationController
     else
       render action: 'edit'
     end
+    authorize! :update, @curriculum
+    authorize! :destroy, @curriculum
   end
 
   def destroy

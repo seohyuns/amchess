@@ -3,9 +3,10 @@
 
   <div class="form-inputs">
     <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :family_id %>
-    <%= f.input :date_of_birth %>
+    <%= f.input :last_name%>
+    <%= f.collection_select :family_id, Family.all, :id, :family_name, prompt: "Select family..." %>
+    <%= f.input :date_of_birth, :as => 'string' %>
+
     <%= f.input :rating %>
     <%= f.input :active %>
   </div>

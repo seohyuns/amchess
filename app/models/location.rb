@@ -19,25 +19,37 @@ class Location < ActiveRecord::Base
 
   # callbacks
   before_destroy :verify_that_never_used_for_camps
-  before_validation :get_location_coordinates
+  # before_validation :get_location_coordinates
+
+
+  def create_map_link(zoom=12,width=400,height=400)
+  #   markers = ""; i = 1
+  #   self.alphabetical.to_a.each do |attr|
+  #   markers += "&markers=color:red%7Ccolor:red%7Clabel:#{i}%7C#{latitude},#{longitude}maptype=roadmap#{markers}&sensor=false"
+  #   i += 1
+  # end
+    map = "http://maps.google.com/maps/api/staticmap?center= #{latitude},#{longitude}&zoom=#{zoom}&size=#{width}x#{height}&maptype=roadmap&sensor=false"
+  end
+
 
   private
-  def verify_that_never_used_for_camps
-    self.camps.empty?
-  end
+  # def verify_that_never_used_for_camps
+  #   self.camps.empty?
+  # end
 
-  def get_location_coordinates
-    str = self.street_1
-    zip = self.zip
+  # def get_location_coordinates
+  #   str = self.street_1
+  #   zip = self.zip
     
-    coord = Geocoder.coordinates("#{str}, #{zip}")
-    if coord
-      self.latitude = coord[0]
-      self.longitude = coord[1]
-    else 
-      errors.add(:base, "Error with geocoding")
-    end
-    coord
-  end
+  #   coord = Geocoder.coordinates("#{str}, #{zip}")
+  #   if coord
+  #     self.latitude = coord[0]
+  #     self.longitude = coord[1]
+  #   else 
+  #     errors.add(:base, "Error with geocoding")
+  #   end
+  #   coord
+  # end
+
 
 end

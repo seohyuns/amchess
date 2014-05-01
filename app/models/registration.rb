@@ -21,6 +21,7 @@ class Registration < ActiveRecord::Base
   scope :paid,         -> { where(payment_status: 'full') }
 
 
+
   private
   def student_rating_appropriate_for_camp
     return true if camp_id.nil? || student_id.nil?

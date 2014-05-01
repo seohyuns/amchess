@@ -65,6 +65,7 @@ Feature: Manage instructors
   # CREATE METHODS
   Scenario: Creating a new instructor is successful
     When I go to the new instructor page
+        Then show me the page
     And I fill in "instructor_first_name" with "Ed"
     And I fill in "instructor_last_name" with "Gruberman"
     And I fill in "instructor_phone" with "(412) 268-3228"

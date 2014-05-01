@@ -1,33 +1,46 @@
 <p id="notice"><%= notice %></p>
+<h1>Student Details</h1>
 
 <p>
-  <strong>First name:</strong>
-  <%= @student.first_name %>
+  <strong>Name:</strong>
+  <%= @student.first_name %>   <%= @student.last_name %>
 </p>
 
 <p>
-  <strong>Last name:</strong>
-  <%= @student.last_name %>
-</p>
-
-<p>
-  <strong>Family:</strong>
-  <%= @student.family_id %>
+  <strong>Age:</strong>
+  <%= @student.age %>
 </p>
 
 <p>
   <strong>Date of birth:</strong>
-  <%= @student.date_of_birth %>
+  <%= @student.date_of_birth.strftime("%m/%d/%Y")  %>
 </p>
 
 <p>
   <strong>Rating:</strong>
-  <%= @student.rating %>
+  <% if @student.rating  == 0 %>
+    <%= 'Unrated' %>
+  <% else %>
+    <%= @student.rating %>
+  <% end %>
 </p>
+
+<strong>Registrations (<%= @student.registrations.size %>)&nbsp;&nbsp;</strong> 
+  <% for reg in @student.registrations %>
+    <%= reg.camp.curriculum.name %>
+    <%= reg.camp.start_date.strftime("%m/%d/%y")  %>
+    <% end %>
+  <br /><br />
+
+
 
 <p>
   <strong>Active:</strong>
-  <%= @student.active %>
+  <% if @student.active  == true %>
+    <%= 'Yes' %>
+  <% else %>
+    <%= 'No' %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_student_path(@student) %> |

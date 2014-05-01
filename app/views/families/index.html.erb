@@ -1,11 +1,11 @@
-<h1>Listing families</h1>
+<h1>Families</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Family name</th>
-      <th>Parent first name</th>
-      <th>Email</th>
+      <th>Family Name</th>
+      <th>Parent </th>   
+      <th>Phone</th>
       <th>Active</th>
       <th></th>
       <th></th>
@@ -16,18 +16,75 @@
   <tbody>
     <% @families.each do |family| %>
       <tr>
-        <td><%= family.family_name %></td>
-        <td><%= family.parent_first_name %></td>
-        <td><%= family.email %></td>
-        <td><%= family.active %></td>
+      <td><%= link_to family.family_name, family_path(family) %></td>
+      <td><%= family.parent_first_name %></td>
+      <td><%= number_to_phone family.phone %></td>
+        <td><%= family.active == "true" ? "Inactive" : "Active" %></td>
         <td><%= link_to 'Show', family %></td>
         <td><%= link_to 'Edit', edit_family_path(family) %></td>
         <td><%= link_to 'Destroy', family, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+
+
   </tbody>
 </table>
 
+<span class="paginate">
+<%= will_paginate @families, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>
+
+<h1>Inactive Families</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Family Name</th> 
+      <th>Phone</th>
+      <th>Active</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @inactive_families.each do |family| %>
+      <tr>
+      <td><%= link_to family.family_name, family_path(family) %></td>
+      <td><%= number_to_phone family.phone %></td>
+        <td><%= family.active == "true" ? "Inactive" : "Active" %></td>
+        <td><%= link_to 'Show', family %></td>
+        <td><%= link_to 'Edit', edit_family_path(family) %></td>
+        <td><%= link_to 'Destroy', family, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+<% end %>
+
+
+  </tbody>
+</table>
+
+<span class="paginate">
+<%= will_paginate @inactive_families, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>
+
+
+
+
+
+
+
+
+
+
 <br>
 
+<span class="paginate">
+<%= will_paginate @families, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>
+
 <%= link_to 'New Family', new_family_path %>
+
+
+
+

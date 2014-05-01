@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Family Details:</strong>
+</p>
+
+
+<p>
   <strong>Family name:</strong>
   <%= @family.family_name %>
 </p>
@@ -11,13 +16,36 @@
 </p>
 
 <p>
+  <strong>Phone:</strong>
+  <%= number_to_phone @family.phone %>
+</p>
+
+<p>
   <strong>Email:</strong>
   <%= @family.email %>
 </p>
 
+
+<% unless @family.students.nil? %>
+<p>
+  <strong>Students:</strong>
+  <% for student in @students %>
+  	<%= student.first_name %>
+  	<%= student.last_name %>
+  <% end %>
+</p>
+<p>
+<% end %>
+
+
+
 <p>
   <strong>Active:</strong>
-  <%= @family.active %>
+  <% if @family.active  == true %>
+    <%= "Yes" %>
+  <% else %>
+    <%= "No" %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_family_path(@family) %> |

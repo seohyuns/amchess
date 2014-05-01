@@ -17,13 +17,12 @@
     <div class="row">
       <div class="small-12 columns" id="main_content">
         <%= render :partial => "partials/flash" %>
-        <%= yield %>
       </div>
 <!-- LOG IN -->
     <div id="login">  
         <% if logged_in? %>
       <%= link_to 'Logout', logout_path %>
-      <br>[<%= current_user.proper_name %>:<%= current_user.role %>]
+      <br>[<%= current_user.instructor.proper_name %>:<%= current_user.role %>]
     <% else %>
       <%= link_to 'Login', login_path %>
     <% end %>
@@ -44,5 +43,6 @@
       </div> 
     </footer> 
     <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag :defaults, "nested_form" %>
   </body>
 </html>

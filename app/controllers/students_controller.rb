@@ -1,11 +1,11 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :check_login
 
   # GET /students
   # GET /students.json
   def index
-    @students = Student.active.alphabetical.paginate(:page => params[:page]).per_page(10)
-    @inactive_students = Student.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
+    @students = Student.alphabetical.paginate(:page => params[:page]).per_page(15)
   end
 
   # GET /students/1
@@ -16,6 +16,7 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
+    authorize! :new, @student
   end
 
   # GET /students/1/edit
@@ -29,7 +30,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to @student, notice: 'Student was successfully created.' }
+        format.html { redirect_to @student, notice: "#{@student.proper_name} was added to the system" }
         format.json { render action: 'show', status: :created, location: @student }
       else
         format.html { render action: 'new' }
@@ -39,16 +40,19 @@ class StudentsController < ApplicationController
   end
 
   # PATCH/PUT /students/1
-  # PATCH/PUT /students/1.json
+  # PATCH/
+  #PUT /students/1.json
   def update
     respond_to do |format|
       if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+        format.html { redirect_to @student, notice: "#{@student.proper_name} was revised in the system" }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
+      authorize! :update, @student
+      authorize! :destroy, @student
     end
   end
 

@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Location:</strong>
-  <%= @location.Location %>
+  <strong>Location Details</strong>
 </p>
 
 <p>
@@ -11,48 +10,28 @@
 </p>
 
 <p>
-  <strong>Street 1:</strong>
+  <strong>Address:</strong>
   <%= @location.street_1 %>
-</p>
-
-<p>
-  <strong>Street 2:</strong>
   <%= @location.street_2 %>
+  <%= @location.city %>, <%= @location.state %>  <%= @location.zip %>
+</p>
+
+  <strong>Map:</strong>
+  <%= image_tag @location.create_map_link %>
 </p>
 
 <p>
-  <strong>City:</strong>
-  <%= @location.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @location.state %>
-</p>
-
-<p>
-  <strong>Zip:</strong>
-  <%= @location.zip %>
-</p>
-
-<p>
-  <strong>Max capacity:</strong>
+  <strong>Maximum Capacity:</strong>
   <%= @location.max_capacity %>
 </p>
 
 <p>
-  <strong>Latitude:</strong>
-  <%= @location.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @location.longitude %>
-</p>
-
-<p>
   <strong>Active:</strong>
-  <%= @location.active %>
+  <% if @location.active  == true %>
+    <%= 'Yes' %>
+  <% else %>
+    <%= 'No' %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
