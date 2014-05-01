@@ -2,7 +2,6 @@ class InstructorsController < ApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
 
-  load_and_authorize_resource
 
   def index
     @active_instructors = Instructor.active.alphabetical.paginate(:page => params[:page]).per_page(10)
@@ -16,9 +15,8 @@ class InstructorsController < ApplicationController
 
   def new
     @instructor = Instructor.new
-    @instructor.build_user
-    flash[:notice] = current_user.to_yaml
     authorize! :new, @instructor
+    @instructor.build_user
   end
 
   def edit
@@ -26,6 +24,7 @@ class InstructorsController < ApplicationController
     @instructor.phone = number_to_phone(@instructor.phone)
     @instructor = Instructor.find(params[:id])
     authorize! :edit, @instructor
+    @instructor.build_user if @instructor.user.nil?
   end
 
   def create
@@ -38,13 +37,13 @@ class InstructorsController < ApplicationController
   end
 
   def update
+      authorize! :update, @instructor
+    authorize! :destroy, @instructor
     if @instructor.update(instructor_params)
       redirect_to @instructor, notice: "#{@instructor.proper_name} was revised in the system"
     else
       render action: 'edit'
     end
-    authorize! :update, @instructor
-    authorize! :destroy, @instructor
   end
 
   def destroy
@@ -59,6 +58,6 @@ class InstructorsController < ApplicationController
     end
 
     def instructor_params
-      params.require(:instructor).permit(:first_name, :last_name, :bio, :email, :phone, :active, users_attributes: [:username, :password])
+      params.require(:instructor).permit(:first_name, :last_name, :bio, :email, :phone, :active, user_attributes: [:username, :password, :role, :id, :password_confirmation, :active])
     end
 end

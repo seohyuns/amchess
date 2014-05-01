@@ -8,7 +8,7 @@ class Instructor < ActiveRecord::Base
   has_one :user
 
 
-accepts_nested_attributes_for :user, reject_if: ->(user) { user[:name].blank? }, allow_destroy: true
+accepts_nested_attributes_for :user, reject_if: ->(user) { user[:username].blank? }, allow_destroy: true
 
 
   # validations
