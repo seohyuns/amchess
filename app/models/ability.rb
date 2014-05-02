@@ -37,8 +37,6 @@ class Ability
   if user.role? :admin
     can :manage, :all
   elsif user.role? :instructor
-    puts user.role? :instructor
-    puts user.inspect
     can :update, Instructor do |instructor|  
       # puts instructor.inspect
       instructor.id == user.instructor_id
@@ -46,9 +44,44 @@ class Ability
     can :edit, Instructor do |instructor|  
       instructor.id == user.instructor_id
     end
-    can :read, Instructor do |instructor|  
+    can :destroy, Instructor do |instructor|  
       instructor.id == user.instructor_id
     end
+    can :read, Student do |student|
+      this_camp = user.instructor.camp_instructors.map(&:camp_id)
+      student_camps = student.registrations.map(&:camp_id)
+      legal = false
+      for i in student_camps
+        for j in this_camp
+          if i == j
+            legal = true
+          end
+        end
+      end
+      legal
+    end
+
+
+
+    #User's ability
+    can :create, User
+
+    can :read, User do |u|
+      u.id == user.id
+    end
+
+    can :edit, User do |u|
+      u.id == user.id
+    end
+
+    can :update, User do |u|
+      u.id == user.id
+    end
+
+
+        
+      
+
   else
     can :read, :all
   end
