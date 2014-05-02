@@ -1,6 +1,6 @@
 class CurriculumsController < ApplicationController
   before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+
 
   def index
     @active_curriculums = Curriculum.active.alphabetical.paginate(:page => params[:page]).per_page(10)
@@ -12,14 +12,17 @@ class CurriculumsController < ApplicationController
   end
 
   def new
+    authorize! :new, @curriculum
     @curriculum = Curriculum.new
     authorize! :new, @curriculum
   end
 
   def edit
+    authorize! :update, @curriculum
   end
 
   def create
+    authorize! :new, @curriculum
     adjust_ratings
     @curriculum = Curriculum.new(curriculum_params)
     if @curriculum.save
@@ -37,12 +40,12 @@ class CurriculumsController < ApplicationController
       render action: 'edit'
     end
     authorize! :update, @curriculum
-    authorize! :destroy, @curriculum
   end
 
   def destroy
     @curriculum.destroy
     redirect_to curriculums_url, notice: "#{@curriculum.name} was removed from the system."
+    authorize! :destroy, @curriculum
   end
 
   private

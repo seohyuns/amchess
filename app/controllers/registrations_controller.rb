@@ -1,6 +1,6 @@
 class RegistrationsController < ApplicationController
   before_action :set_registration, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+
 
   # GET /registrations
   # GET /registrations.json

@@ -22,7 +22,7 @@ class InstructorsController < ApplicationController
   def edit
     # reformating the phone so it has dashes when displayed for editing (personal taste)
     @instructor.phone = number_to_phone(@instructor.phone)
-    @instructor = Instructor.find(params[:id])
+    # @instructor = Instructor.find(params[:id])
     authorize! :edit, @instructor
     @instructor.build_user if @instructor.user.nil?
   end
@@ -37,8 +37,7 @@ class InstructorsController < ApplicationController
   end
 
   def update
-      authorize! :update, @instructor
-    authorize! :destroy, @instructor
+    authorize! :update, @instructor
     if @instructor.update(instructor_params)
       redirect_to @instructor, notice: "#{@instructor.proper_name} was revised in the system"
     else

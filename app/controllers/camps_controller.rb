@@ -2,6 +2,8 @@ class CampsController < ApplicationController
   before_action :set_camp, only: [:show, :edit, :update, :destroy]
   before_action :check_login
 
+
+
   def index
     @upcoming_camps = Camp.upcoming.active.chronological.paginate(:page => params[:page]).per_page(10)
     @past_camps = Camp.past.chronological.paginate(:page => params[:page]).per_page(10)
@@ -13,20 +15,22 @@ class CampsController < ApplicationController
   end
 
   def new
+    authorize! :new, @camp
     @camp = Camp.new
   end
 
   def edit
+    authorize! :new, @camp
   end
 
   def create
+    authorize! :new, @camp
     @camp = Camp.new(camp_params)
     if @camp.save
       redirect_to @camp, notice: "The camp #{@camp.name} (on #{@camp.start_date.strftime('%m/%d/%y')}) was added to the system."
     else
       render action: 'new'
     end
-    authorize! :new, @camp
   end
 
   def update
@@ -35,8 +39,6 @@ class CampsController < ApplicationController
     else
       render action: 'edit'
     end
-    authorize! :update, @camp
-    authorize! :destroy, @camp
   end
 
   def destroy

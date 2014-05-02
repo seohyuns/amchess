@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Must be an Admin to have access."
+    flash[:error] = "You are not authorized to take this action"
     redirect_to home_path
   end
 

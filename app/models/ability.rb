@@ -35,12 +35,18 @@ class Ability
       user ||= User.new # guest user (not logged in)
 
   if user.role? :admin
-        can :manage, :all
-    elsif user.role? :instructor
+    can :manage, :all
+  elsif user.role? :instructor
+    puts user.role? :instructor
+    puts user.inspect
     can :update, Instructor do |instructor|  
+      # puts instructor.inspect
       instructor.id == user.instructor_id
     end
     can :edit, Instructor do |instructor|  
+      instructor.id == user.instructor_id
+    end
+    can :read, Instructor do |instructor|  
       instructor.id == user.instructor_id
     end
   else

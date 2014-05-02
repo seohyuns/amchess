@@ -7,7 +7,7 @@
 
 <strong>Registrations (<%= @camp.registrations.size %>)&nbsp;&nbsp;</strong> 
   <% for reg in @camp.registrations %>
-    <%= reg.student.name %>
+    <%= link_to reg.student.name, student_path(reg.student) %><br /><br />
     <%= reg.student.rating %>
     <% end %>
   <br /><br />

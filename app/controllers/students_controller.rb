@@ -53,7 +53,6 @@ class StudentsController < ApplicationController
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
       authorize! :update, @student
-      authorize! :destroy, @student
     end
   end
 
@@ -65,6 +64,7 @@ class StudentsController < ApplicationController
       format.html { redirect_to students_url }
       format.json { head :no_content }
     end
+          authorize! :destroy, @student
   end
 
   private

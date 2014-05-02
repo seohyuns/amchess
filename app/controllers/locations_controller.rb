@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+
 
   # GET /locations
   # GET /locations.json
@@ -17,16 +17,19 @@ class LocationsController < ApplicationController
 
   # GET /locations/new
   def new
+    authorize! :new, @location
     @location = Location.new
   end
 
   # GET /locations/1/edit
   def edit
+    authorize! :update, @location
   end
 
   # POST /locations
   # POST /locations.json
   def create
+    authorize! :new, @location
     @location = Location.new(location_params)
 
     respond_to do |format|
