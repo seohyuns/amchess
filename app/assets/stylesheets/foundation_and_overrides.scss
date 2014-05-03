@@ -51,7 +51,7 @@
 // $default-float: left;
 
 // We use these as default colors throughout
-// $primary-color: #008CBA;
+// $primary-color: #D0D0D0;
 // $secondary-color: #e7e7e7;
 // $alert-color: #f04124;
 $success-color: #B5EBC9;
@@ -269,7 +269,7 @@ $alert-font-color: #43AC6A;
 // $include-html-grid-classes: $include-html-classes;
 
 // We use this to control the maximum number of block grid elements per row
-// $block-grid-elements: 12;
+// $block-grid-elements: 24;
 // $block-grid-default-spacing: rem-calc(20);
 
 // Enables media queries for block-grid classes. Set to false if writing semantic HTML.
@@ -913,7 +913,7 @@ $panel-bg: scale-color(#B5E7F5, $lightness: 50%);
 // We use these to control border styles
 // $side-nav-divider-size: 1px;
 // $side-nav-divider-style: solid;
-// $side-nav-divider-color: scale-color(#fff, $lightness: -10%);
+ $side-nav-divider-color: scale-color(#D0D0D0, $lightness: -10%);
 
 // Split Buttons
 
@@ -1028,8 +1028,8 @@ $panel-bg: scale-color(#B5E7F5, $lightness: 50%);
 // $include-html-table-classes: $include-html-classes;
 
 // These control the background color for the table and even rows
-// $table-bg: #fff;
-$table-even-row-bg: #FAF2F0;
+// $table-bg: #F5F5F5;
+$table-even-row-bg: #F5F5F5;
 
 // These control the table cell border style
 $table-border-style: none;
@@ -1225,7 +1225,8 @@ a img {
   margin: 7px auto;
   color:black;
   text-align:center;
-  font-size:70%;
+  font-size:250%;
+  font-family:Dense, sans-serif;
 }
 
 #copy a {
@@ -1237,8 +1238,8 @@ a img {
 }
 
 .supertiny{
-  font-size:5px;
-  font-family:Verdana, Arial, Helvetica, sans-serif;
+  font-size:10px;
+  font-family:Dense, sans-serif;
   text-decoration:none;
 }
 

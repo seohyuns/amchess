@@ -1,0 +1,12 @@
+
+  <!-- <h3>&nbsp;</h3> -->
+  <div class="panel clearfix">
+    <h5>Registrations (<%=@camp.registrations.size %>)</h5>
+    <ul class="side-nav">
+    <% for reg in @camp.registrations %>
+      <%= link_to reg.student.name, student_path(reg.student) %>       rating: <%= reg.student.rating %><br />
+      <% end %>
+    </ul>
+  </div>
+
+

@@ -1,0 +1,61 @@
+<div class="container_12">
+
+<div class="grid_12">
+	<h2>Welcome To A&amp;M Chess Camp</h2>
+<p>The A &amp; M 
+  Chess Camps are the finest chess camps in the United States (<em>we concede 
+  Russia can do better, but not much better</em>) and guaranteed to 
+  <strong>transform your son or daughter into a tiger at the chess board</strong>.  
+  The links below will tell you more about our camps, curriculums and 
+  instructors and in the future will actually allow you to register your son 
+  or daughter for those camps. 
+</p>
+<p>If you are an administrator (don't lie), <%= link_to "click here to review camps.", camps_path %></p>
+<br></br>
+
+
+<%= image_tag 'AlexPlaying10.jpg', :align=> "middle", width: "960" %> 
+<div id = "center">
+	<br></br>
+<%= image_tag 'line.jpg', width: "400" %> 
+</div>
+
+</div>
+</div>
+
+<br></br>
+
+<div class="container_12">
+
+<h2>Check out Some of Our Upcoming Camps!</h2>
+<div class="grid_8 push_2">
+<table>
+  <thead>
+    <tr>
+     <th>Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Rating</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @upcoming_camps.each do |camp| %>
+      <tr>
+        <td><%= camp.curriculum.name%></td>
+        <td><%= camp.location.street_1 %></td>
+        <td><%= camp.location.city %></td>
+        <td><%= camp.location.state %></td>
+        <td><%= camp.curriculum.min_rating%>-<%= camp.curriculum.min_rating%></td>
+        <td>  <%= camp.start_date.strftime('%m/%d/%y') %> 
+  <% if camp.start_date != camp.end_date %>
+    <%= "- #{camp.end_date.strftime('%m/%d/%y')}" %>
+  <% end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>

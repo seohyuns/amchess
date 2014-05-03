@@ -1,5 +1,13 @@
 <h1>Students</h1>
 
+
+<div class="container_12">
+
+  <div class="grid_2" >
+<%= link_to 'New Student', new_student_path %>
+</div>
+
+  <div class="grid_8 push_2" >
 <table>
   <thead>
     <tr>
@@ -35,5 +43,9 @@
 <span class="paginate">
 <%= will_paginate @students, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
 </span>
+</div>
 
-<%= link_to 'New Student', new_student_path %>
+
+
+
+

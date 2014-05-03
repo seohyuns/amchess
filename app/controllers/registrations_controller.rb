@@ -18,6 +18,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations/new
   def new
     @registration = Registration.new
+    @regirstration.camp_id = [:camp_id] unless @registration.camp_id.nil??
   end
 
   # GET /registrations/1/edit

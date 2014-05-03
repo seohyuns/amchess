@@ -1,17 +1,10 @@
+
 <h3>Camp Details</h3><br />
 <strong>Name:&nbsp;&nbsp;</strong> 
   <%= link_to @camp.name, curriculum_path(@camp.curriculum) %><br /><br />
 
 <strong>Rating:&nbsp;&nbsp;</strong> 
-  <%= @camp.curriculum.min_rating.zero? ? "Unrated" : @camp.curriculum.min_rating %> - <%= @camp.curriculum.max_rating %> %><br /><br />
-
-<strong>Registrations (<%= @camp.registrations.size %>)&nbsp;&nbsp;</strong> 
-  <% for reg in @camp.registrations %>
-  <strong>Student Details</strong> 
-    <%= link_to reg.student.name, student_path(reg.student) %><br /><br />
-    <%= reg.student.rating %>
-    <% end %>
-  <br /><br />
+  <%= @camp.curriculum.min_rating.zero? ? "Unrated" : @camp.curriculum.min_rating %> - <%= @camp.curriculum.max_rating %><br /><br />
 
 <strong>Cost:&nbsp;&nbsp;</strong> 
   <%= number_to_currency(@camp.cost) %><br /><br />
@@ -27,13 +20,10 @@
   <br /><br />
 
 <strong>Time:&nbsp;&nbsp;</strong> 
-  <%= @camp.time_slot == "am" ? "Morning" : "Afternoon" %> s<br /><br />
+  <%= @camp.time_slot == "am" ? "Morning" : "Afternoon" %><br /><br />
 
 <strong>Active?&nbsp;&nbsp;</strong>
   <%= @camp.active ? "Yes" : "No" %><br /><br />
-
-
-
 
 
 <%= link_to "Edit this camp", edit_camp_path(@camp), class: "button tiny radius" %>&nbsp;&nbsp;

@@ -1,10 +1,11 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Location Details</strong>
-</p>
+  <h2>Location Details</h2>
 
-<p>
+
+<div class="container_12">
+  <div class="grid_8" >
+
+<p >
   <strong>Name:</strong>
   <%= @location.name %>
 </p>
@@ -14,10 +15,6 @@
   <%= @location.street_1 %>
   <%= @location.street_2 %>
   <%= @location.city %>, <%= @location.state %>  <%= @location.zip %>
-</p>
-
-  <strong>Map:</strong>
-  <%= image_tag @location.create_map_link %>
 </p>
 
 <p>
@@ -34,5 +31,16 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<p>
+<%= link_to 'Edit', edit_location_path(@location), class: "button tiny radius" %> |
+<%= link_to 'Back', locations_path, class: "button tiny radius" %>
+</p>
+</div> 
+
+<div class= "grid_4", id = "content">
+<p>
+  <%= image_tag @location.create_map_link %>
+</p>
+
+</div>
+</div>
