@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
 
   # GET /locations
@@ -46,6 +47,7 @@ class LocationsController < ApplicationController
   # PATCH/PUT /locations/1
   # PATCH/PUT /locations/1.json
   def update
+        authorize! :update, @location
     respond_to do |format|
       if @location.update(location_params)
         format.html { redirect_to @location, notice: "#{@location.name} location was revised in the system" }
@@ -60,6 +62,7 @@ class LocationsController < ApplicationController
   # DELETE /locations/1
   # DELETE /locations/1.json
   def destroy
+            authorize! :destroy, @location
     @location.destroy
     respond_to do |format|
       format.html { redirect_to locations_url }

@@ -34,6 +34,9 @@
 <%= will_paginate @families, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
 </span>
 
+
+  <div class="small-4 columns">
+
 <h1>Inactive Families</h1>
 
 <table>
@@ -68,20 +71,8 @@
 <%= will_paginate @inactive_families, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
 </span>
 
+</div>
 
-
-
-
-
-
-
-
-
-<br>
-
-<span class="paginate">
-<%= will_paginate @families, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
-</span>
 
 <%= link_to 'New Family', new_family_path %>
 

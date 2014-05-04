@@ -1,6 +1,9 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
   <head>
+    <%= favicon_link_tag 'logo.ico' %>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -21,24 +24,22 @@
 <!-- LOG IN -->
     <div id="login" id = "content">  
         <% if logged_in? %>
-      <%= link_to 'Logout', logout_path %>
-      <br>[<%= current_user.instructor.proper_name %>:<%= current_user.role %>]
+      <%= link_to 'Logout', logout_path, class: "button tiny radius" %> AS <%= current_user.instructor.proper_name %>
     <% else %>
-      <%= link_to 'Login', login_path %>
+      <%= link_to 'Login', login_path, class: "button tiny radius"%>
     <% end %>
       </div>
   </div>
 
-    </div>
-
-      
-    </div>
-
-<div class="container_12">
-
-      <%= yield %>
-
 </div>
+
+
+
+        <div class="container_12" id = "main_content">
+
+          <%= yield %>
+
+        </div>
 
 
     <footer>

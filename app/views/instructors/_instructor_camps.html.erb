@@ -1,6 +1,7 @@
+<div class="container_24">
 <% unless @upcoming_camps.to_a.empty? %>
   <!-- <h3>&nbsp;</h3> -->
-  <div clas= "grid_3" id = "content">
+  <div clas= "grid_3 push_" id = "content">
     <h5>Upcoming Camps</h5>
     <ul class="side-nav">
       <% @upcoming_camps.each do |camp| %>
@@ -13,7 +14,7 @@
 
 
 <% unless @past_camps.to_a.empty? %>
-  <div clas= "grid_3" id = "content">
+  <div class="panel clearfix" id="past">
     <h5>Past Camps</h5>
     <ul class="side-nav" id = "past">
       <% @past_camps.each do |camp| %>
@@ -23,4 +24,4 @@
   </div>
 <% end %>
 
-
+</div>

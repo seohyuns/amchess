@@ -36,6 +36,8 @@ class Ability
 
   if user.role? :admin
     can :manage, :all
+
+
   elsif user.role? :instructor
     can :update, Instructor do |instructor|  
       # puts instructor.inspect
@@ -44,9 +46,10 @@ class Ability
     can :edit, Instructor do |instructor|  
       instructor.id == user.instructor_id
     end
-    can :destroy, Instructor do |instructor|  
+    can :read, Instructor do |instructor|  
       instructor.id == user.instructor_id
     end
+
     can :read, Student do |student|
       this_camp = user.instructor.camp_instructors.map(&:camp_id)
       student_camps = student.registrations.map(&:camp_id)
@@ -60,6 +63,10 @@ class Ability
       end
       legal
     end
+
+    can :read, Camp 
+
+    can :read, Curriculum
 
 
 
@@ -78,12 +85,8 @@ class Ability
       u.id == user.id
     end
 
-
-        
-      
-
   else
-    can :read, :all
+    can :read, Camp
   end
 end
 

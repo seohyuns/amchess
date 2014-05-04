@@ -3,11 +3,7 @@
 
 <div class="container_12">
 
-  <div class="grid_2" >
-<%= link_to 'New Student', new_student_path %>
-</div>
-
-  <div class="grid_8 push_2" >
+  <div class="grid_8" id = "content" >
 <table>
   <thead>
     <tr>
@@ -16,7 +12,6 @@
       <th>Rating</th>
       <th>Date of birth</th>
       <th>Active</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -30,7 +25,6 @@
         <td><%= student.rating == 0 ? "Unrated" : student.rating %></td>
         <td><%= student.date_of_birth.strftime("%B %d, %Y") %></td>
         <td><%= student.active == "true" ? "Inactive" : "Active" %></td>>
-        <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -43,9 +37,13 @@
 <span class="paginate">
 <%= will_paginate @students, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
 </span>
+
+
+  <div class="grid_2 push_8" id = "content" >
+<%= link_to 'New Student', new_student_path,class: "button tiny radius" %>
 </div>
 
-
+</div>
 
 
 

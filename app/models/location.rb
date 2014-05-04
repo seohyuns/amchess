@@ -25,6 +25,8 @@ class Location < ActiveRecord::Base
   def create_map_link(zoom=15,width=400,height=400)
     markers = "&markers=color:red%7Ccolor:red%7Clabel:%7C#{self.latitude},#{self.longitude}"
     map = "http://maps.google.com/maps/api/staticmap?center=#{self.latitude},#{self.longitude}&zoom=#{zoom}&size=#{width}x#{height}&maptype=roadmap#{markers}&sensor=false"
+  
+
   end
 
 

@@ -79,7 +79,7 @@ body {
 .grid_15,
 .grid_16 {
   display: inline;
-  float: left;
+  float: center;
   margin-left: 10px;
   margin-right: 10px;
 }

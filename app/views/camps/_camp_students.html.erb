@@ -4,7 +4,9 @@
     <h5>Registrations (<%=@camp.registrations.size %>)</h5>
     <ul class="side-nav">
     <% for reg in @camp.registrations %>
-      <%= link_to reg.student.name, student_path(reg.student) %>       rating: <%= reg.student.rating %><br />
+      <strong><%= link_to reg.student.name, student_path(reg.student) %></strong> <br>      
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating: <%= reg.student.rating %><br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Payment Received: <%= reg.payment_status %><br />
       <% end %>
     </ul>
   </div>

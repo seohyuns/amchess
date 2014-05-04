@@ -12,10 +12,30 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require jquery_nested_form
 //= require foundation
 //= require_tree .
+//= require underscore
+//= require gmaps/google
+//= require jquery.toggle.buttons
+
 
 
 $(function(){ $(document).foundation(); });
 
+
+// Flash fade
+$(function() {
+   $('.alert-box').fadeIn('normal', function() {
+      $(this).delay(3700).fadeOut();
+   });
+});
+
+
+// Datepicker code
+$(function() {
+  $(".datepicker").datepicker({
+    format: 'mm/dd/YYYY'
+  });
+});

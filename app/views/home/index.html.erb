@@ -2,7 +2,7 @@
 <% if current_user && current_user.is_admin %>
 	<%= render :partial => "dashboard" %>
 <% elsif current_user && current_user.is_instructor %>
-	<%= render :partial => "partial/dashboard" %>
+	<%= render :partial => "instdash" %>
 <% else %>
 		<%= render :partial => "userdash" %>
 

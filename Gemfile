@@ -27,8 +27,13 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'gmaps4rails'
+gem 'underscore-rails'
 
+gem 'jquery-ui-rails', '4.1.1'
 gem 'cancancan'
+
+gem 'bootstrap-toggle-buttons-rails', git: 'git://github.com/wafcio/bootstrap-toggle-buttons-rails.git'
 
 gem 'nested_form'
 

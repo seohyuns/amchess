@@ -1,0 +1,110 @@
+<h1> Welcome <%= current_user.instructor.proper_name%>!</h1>
+
+	<div class= "grid_4" id = "content">
+		<h3> profile </h3>
+		<img alt="Profile Picture" src="/assets/propic.jpg"/>
+		<br></br>
+		<strong>Role:&nbsp;&nbsp;</strong> 
+			"Instructor"
+<br /><br />
+
+		<strong>Phone:&nbsp;&nbsp;</strong> 
+		  <%= number_to_phone(current_user.instructor.phone) %><br /><br />
+
+		<strong>Email:&nbsp;&nbsp;</strong> 
+		  <%= mail_to current_user.instructor.email, current_user.instructor.email, encode: "javascript" %><br /><br />
+
+		<% if not @current_user.nil? %>
+			<strong>Role:&nbsp;&nbsp;</strong> 
+			  <%= current_user.role %><br /><br />
+
+			<strong>Username:&nbsp;&nbsp;</strong> 
+			  <%= current_user.username %><br /><br />
+		<% end %>
+
+		<strong>Active?&nbsp;&nbsp;</strong>
+		  <%= current_user.instructor.active ? "Yes" : "No" %><br /><br />
+
+		<strong>Biography</strong><br />
+		  <%= current_user.instructor.bio.nil? ? "N/A" : current_user.instructor.bio %><br /><br />
+
+
+
+		<ul><%= link_to "Edit Your Profile", edit_instructor_path(current_user.instructor), class: "button tiny radius" %></td>
+
+	</div>
+
+
+
+	<div class="grid_8" id ="content">
+		<h3> Your Upcoming Camps</h3>
+		<table>
+		  <thead>
+		    <tr>
+		      <th>Camp</th>
+		      <th>Registered Students</th>
+  		      <th>Date</th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		    <% current_user.instructor.camps.each do |camp| %>
+		      <tr>
+		        <td><%= link_to camp.name, camp_path(camp) %></td>
+		        <td><%= camp.registrations.size %></td>
+		        <td><%= camp.start_date.strftime('%m/%d/%y') %> 
+				  <% if camp.start_date != camp.end_date %>
+				    <%= "- #{camp.end_date.strftime('%m/%d/%y')}" %>
+				  <% end %>
+				</td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+		<span class="paginate">
+			<%= will_paginate @upcoming_camps, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+		</span>
+		<br></br>
+</div>
+
+
+<div id = "top_padding">
+	<div class="grid_8" id ="content">
+
+		<h3> Fellow Instructors</h3>
+		<table>
+		  <thead>
+		    <tr>
+		      <th>Instructor</th>
+		      <th>Email</th>
+		      <th>Phone</th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		    <% @instructors.each do |inst| %>
+		      <tr>
+		        <td><%= inst.name %></td>
+		        <td><%= inst.phone %></td>
+		        <td><%= inst.email %></td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+		<span class="paginate">
+			<%= will_paginate @upcoming_camps, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+		</span>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
