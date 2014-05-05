@@ -24,7 +24,7 @@
         <td><%= student.age %></td>
         <td><%= student.rating == 0 ? "Unrated" : student.rating %></td>
         <td><%= student.date_of_birth.strftime("%B %d, %Y") %></td>
-        <td><%= student.active == "true" ? "Inactive" : "Active" %></td>>
+        <td><%= student.active == "true" ? "Inactive" : "Active" %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -40,7 +40,7 @@
 
 
   <div class="grid_2 push_8" id = "content" >
-<%= link_to 'New Student', new_student_path,class: "button tiny radius" %>
+<%= link_to 'New Student', new_student_path, class: "button tiny radius" %>
 </div>
 
 </div>

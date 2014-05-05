@@ -6,9 +6,8 @@
     <% for reg in @camp.registrations %>
       <strong><%= link_to reg.student.name, student_path(reg.student) %></strong> <br>      
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating: <%= reg.student.rating %><br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Payment Received: <%= reg.payment_status %><br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Balance Due: $<%= reg.payment_status == "deposit" ? reg.camp.cost - 50 : 0 %><br />
       <% end %>
     </ul>
   </div>
-
 

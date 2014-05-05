@@ -28,7 +28,7 @@ $(function(){ $(document).foundation(); });
 // Flash fade
 $(function() {
    $('.alert-box').fadeIn('normal', function() {
-      $(this).delay(3700).fadeOut();
+      $(this).delay(3000).fadeOut();
    });
 });
 
@@ -39,3 +39,8 @@ $(function() {
     format: 'mm/dd/YYYY'
   });
 });
+
+
+
+
+

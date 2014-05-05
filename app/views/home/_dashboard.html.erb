@@ -51,7 +51,7 @@
 		  <tbody>
 		    <% @upcoming_camps.each do |camp| %>
 		      <tr>
-		        <td><%= link_to camp.curriculum.name, curriculum_path(camp.curriculum) %></td>
+		        <td><%= link_to camp.curriculum.name, camp_path(camp) %></td>
 		        <td><%= camp.registrations.size %></td>
 		        <td><%= camp.start_date.strftime('%m/%d/%y') %> 
 				  <% if camp.start_date != camp.end_date %>
@@ -77,7 +77,8 @@
 		  <thead>
 		    <tr>
 		      <th>Instructor</th>
-		      <th>Number of Camps Assigned</th>
+		      <th>Number of Camps</th>
+		      <th>Email</th>
 		      <th>Actions</th>
 		    </tr>
 		  </thead>
@@ -87,6 +88,7 @@
 		      <tr>
 		        <td><%= link_to inst.name, instructor_path(inst) %></td>
 		        <td><%= inst.camps.size %></td>
+ 				<td><%= mail_to 'Email', inst.email, encode: "javascript", class: "button tiny radius" %></td>
 		        <td><%= link_to 'Edit', edit_instructor_path(inst), class: "button tiny radius" %></td>
 		      </tr>
 		    <% end %>

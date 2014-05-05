@@ -25,14 +25,14 @@
   <% end %>
 </p>
 
+<p>
 <strong>Registrations (<%= @student.registrations.size %>)&nbsp;&nbsp;</strong> 
   <% for reg in @student.registrations %>
     <%= reg.camp.curriculum.name %>
     <%= reg.camp.start_date.strftime("%m/%d/%y")  %>
     <% end %>
-  <br /><br />
 
-
+</p>
 
 <p>
   <strong>Active:</strong>
@@ -42,6 +42,7 @@
     <%= 'No' %>
   <% end %>
 </p>
-
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<p>
+<%= link_to 'Edit', edit_student_path(@student), class: "button tiny radius"%> |
+<%= link_to 'Back', students_path, class: "button tiny radius" %>
+</p>
