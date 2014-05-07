@@ -2,7 +2,13 @@
 
 	<div class= "grid_4" id = "content">
 		<h3> profile </h3>
-		<img alt="Profile Picture" src="/assets/propic.jpg"/>
+		<div class = "photo">
+		  <% if !current_user.instructor.picture_url.nil? %>
+    			<p><%= image_tag current_user.instructor.picture_url %></p>
+	  	  <%else%>
+	  		<img alt="Profile Picture" src="/assets/propic.jpg"/>
+  		  <% end %>
+  		 </div>
 		<br></br>
 		<strong>Role:&nbsp;&nbsp;</strong> 
 			"Administrator"
@@ -31,6 +37,8 @@
 
 
 		<ul><%= link_to "Edit Your Profile", edit_instructor_path(current_user.instructor), class: "button tiny radius" %></td>
+
+
 
 	</div>
 

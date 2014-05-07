@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-  before_action :set_registration, only: [:show, :edit, :update, :destroy]
+  before_action :set_registration, only: [:show, :edit, :update, :destroy, :change_payment]
 
 
   # GET /registrations
@@ -17,8 +17,6 @@ class RegistrationsController < ApplicationController
 
   # GET /registrations/new
   def new
-    @registration = Registration.new
-    @regirstration.camp_id = [:camp_id] unless @registration.camp_id.nil??
   end
 
   # GET /registrations/1/edit
@@ -29,16 +27,18 @@ class RegistrationsController < ApplicationController
   # POST /registrations.json
   def create
     @registration = Registration.new(registration_params)
-
-    respond_to do |format|
+    @camp = Camp.find(@registration.camp_id)
       if @registration.save
-        format.html { redirect_to @registration, notice: 'Registration was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @registration }
+        redirect_to @camp, notice: 'Registration was successfully created.'
       else
-        format.html { render action: 'new' }
-        format.json { render json: @registration.errors, status: :unprocessable_entity }
+         render action: 'new' 
       end
-    end
+  end
+
+  def change_payment
+    @registration.payment_status = 'full'
+    @registration.save
+    redirect_to student_path(@registration.student)
   end
 
   # PATCH/PUT /registrations/1

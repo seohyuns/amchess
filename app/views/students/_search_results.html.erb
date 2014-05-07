@@ -1,0 +1,6 @@
+  <ul>
+    <% @students.each do |grant| %>
+  <li><%= link_to grant.name, 
+    :action => 'show', :id => student.id  %></li>
+  <% end %>
+  </ul>

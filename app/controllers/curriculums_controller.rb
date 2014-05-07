@@ -48,6 +48,12 @@ class CurriculumsController < ApplicationController
     authorize! :destroy, @curriculum
   end
 
+  def search
+    q = params[:camp][:name]
+    @curriculums = Curriculum.find(:all, :conditions => ["name LIKE %?%",q])
+  end
+
+
   private
     def set_curriculum
       @curriculum = Curriculum.find(params[:id])
@@ -61,4 +67,6 @@ class CurriculumsController < ApplicationController
       params[:curriculum][:min_rating] = 0 if params[:curriculum][:min_rating].nil?
       params[:curriculum][:max_rating] = 3000 if params[:curriculum][:max_rating].nil? 
     end
+
+
 end

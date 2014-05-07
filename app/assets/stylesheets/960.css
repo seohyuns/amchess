@@ -12,6 +12,17 @@
 
   Note: IE6 works fine without this fix.
 */
+label.boolean.control-label.checkbox.toggle-button {
+  padding-left: 0;
+}
+
+.photo {
+  width: 250px;
+}
+
+ .hidden {
+  display: none !important;
+ }
 
 #center{
 margin-left:auto;
@@ -38,6 +49,7 @@ width:40%;
   padding-left: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
+  padding-right: 20px;
   border-radius: 20px ;
 /*  box-shadow: 1px 1px 3px 3px #888888*/
 }

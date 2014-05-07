@@ -1,7 +1,6 @@
 class Instructor < ActiveRecord::Base
   include ChessCampHelpers
   mount_uploader :picture, PictureUploader
-
   # relationships
   has_many :camp_instructors
   has_many :camps, through: :camp_instructors
@@ -30,6 +29,16 @@ accepts_nested_attributes_for :user, reject_if: ->(user) { user[:username].blank
     # the easy way... 
     # camp.instructors
   end
+
+  def self.search(search)  
+    if search  
+      find(:all, :conditions => ['first_name LIKE ? || last_name LIKE ?', "%#{search}%"])  
+    else  
+      find(:all)  
+    end  
+  end  
+
+
 
   # callbacks
   before_save :reformat_phone

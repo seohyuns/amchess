@@ -12,6 +12,11 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%# javascript_include_tag "application" %> 
     <%= csrf_meta_tags %>
+
+<!-- for Google API -->
+    <% if content_for? :for_head %>
+      <%= yield :for_head %>
+    <% end %>
   </head>
 
   <body>

@@ -8,15 +8,18 @@ class CampsController < ApplicationController
     @past_camps = Camp.past.chronological.paginate(:page => params[:page]).per_page(10)
     @inactive_camps = Camp.inactive.alphabetical.to_a
     @students = Student.active.alphabetical.to_a
+    @registrations = Registration.by_student.to_a
+
   end
 
   def show
     @instructors = @camp.instructors.alphabetical.to_a
+    @inactive_camps = Camp.inactive.alphabetical.to_a
+    @registration = Registration.new 
   end
 
   def new
     @camp = Camp.new
-
   end
 
   def edit
@@ -42,7 +45,6 @@ class CampsController < ApplicationController
 
 
   def destroy
-
     @camp.destroy
     redirect_to camps_url, notice: "#{@camp.name} camp on #{@camp.start_date.strftime('%m/%d/%y')} was removed from the system."
   end
@@ -55,4 +57,6 @@ class CampsController < ApplicationController
     def camp_params
       params.require(:camp).permit(:curriculum_id, :location_id, :cost, :start_date, :end_date, :time_slot, :max_students, :active, :instructor_ids => [])
     end
+
+
 end

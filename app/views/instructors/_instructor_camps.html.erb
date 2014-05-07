@@ -2,26 +2,31 @@
 <% unless @upcoming_camps.to_a.empty? %>
   <!-- <h3>&nbsp;</h3> -->
   <div clas= "grid_3 push_" id = "content">
-    <h5>Upcoming Camps</h5>
+    <h3>Upcoming Camps</h3>
     <ul class="side-nav">
       <% @upcoming_camps.each do |camp| %>
         <li><%= link_to camp.name, camp_path(camp) %> (<%= camp.start_date.strftime('%m/%d/%y') %>)</li>
       <% end %>
     </ul>
   </div>
+<% else %>
+    <h3>There are no upcoming camps to be displayed</h3>
 <% end %>
 
 
 
 <% unless @past_camps.to_a.empty? %>
   <div class="panel clearfix" id="past">
-    <h5>Past Camps</h5>
+    <h3>Past Camps</h3>
     <ul class="side-nav" id = "past">
       <% @past_camps.each do |camp| %>
         <li><%= link_to camp.name, camp_path(camp) %> (<%= camp.start_date.strftime('%m/%d/%y') %>)</li>
       <% end %>
     </ul>
   </div>
+
+<% else %>
+    <h3>There are no past camps to be displayed</h3>
 <% end %>
 
 </div>

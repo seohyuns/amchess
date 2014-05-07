@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :set_student, only: [:show, :edit, :update, :destroy, :search]
   before_action :check_login
   load_and_authorize_resource
 
@@ -39,6 +39,11 @@ class StudentsController < ApplicationController
       end
     end
   end
+
+def search
+  @grants = Grant.search params[:search]
+end
+
 
   # PATCH/PUT /students/1
   # PATCH/

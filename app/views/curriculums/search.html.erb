@@ -1,0 +1,7 @@
+<%-@camps.each do |camp| %>
+  Name: <%=curriculum.name %>
+
+  <%- camp.curriculums.each do |cur| %>
+    <%= cur.start_date %>
+  <%- end %>
+<%- end %

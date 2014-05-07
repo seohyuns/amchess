@@ -1,14 +1,14 @@
 
 
-<% if ! @inactive_camps.nil? %>
+<% unless @inactive_camps.empty? %>
   <div class="panel clearfix">
     <h5>Inactive Camps</h5>
       <% @inactive_camps.each do |camp| %>
         <li><%= link_to camp.name, camp_path(camp) %></li>
       <% end %>
   </div>
-  <% else %>
-  	<% There is no inactive camps to be displayed %>
+<% else %>
+  	<h3>There are no inactive camps to be displayed</h3>
 <% end %>
 
     <%= link_to "Add a new camp", new_camp_path, class: "button tiny radius" %>

@@ -25,14 +25,36 @@
   <% end %>
 </p>
 
-<p>
-<strong>Registrations (<%= @student.registrations.size %>)&nbsp;&nbsp;</strong> 
-  <% for reg in @student.registrations %>
-    <%= reg.camp.curriculum.name %>
-    <%= reg.camp.start_date.strftime("%m/%d/%y")  %>
-    <% end %>
 
-</p>
+
+<p>
+  <% unless @student.registrations.empty? %>
+
+  <strong>Registrations (<%= @student.registrations.size %>)&nbsp;&nbsp;</strong> 
+    <table id="center">
+      <tr>
+        <th><strong>Camp Name</strong></th>
+        <th><strong>Start Date</strong></th>
+        <th><strong>Payment Status</strong></th>
+      </tr>
+
+    <% for reg in @student.registrations %>
+      <tr>
+        <td><%= reg.camp.curriculum.name %></td>
+        <td><%= reg.camp.start_date.strftime("%m/%d/%y")  %></td>
+        <td><%= reg.payment_status %></td>
+        <td><% if reg.payment_status == 'deposit' %>
+          <%= link_to 'Pay Full Payment', change_payment_path(reg), class: "button tiny radius"%>
+        <%end %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <% else %>
+      <h3><%= @student.first_name%> is not registered to any Camp</h3>
+  <% end %>
+<p>
+
 
 <p>
   <strong>Active:</strong>
@@ -42,7 +64,9 @@
     <%= 'No' %>
   <% end %>
 </p>
+
+ <br></br>
 <p>
 <%= link_to 'Edit', edit_student_path(@student), class: "button tiny radius"%> |
-<%= link_to 'Back', students_path, class: "button tiny radius" %>
+<%= link_to 'Back', camps_path, class: "button tiny radius" %>
 </p>

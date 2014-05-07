@@ -1,4 +1,4 @@
-  <%= simple_nested_form_for @instructor, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= simple_nested_form_for @instructor, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
     <div class="row">
       <div class="span7">
         <fieldset>
@@ -8,7 +8,9 @@
             <%= f.input :phone, as: :string %>
             <%= f.input :email %>
             <%= f.input :active %>          
-            <%= f.input :bio, input_html: {rows: 6} %>           
+            <%= f.input :bio, input_html: {rows: 6} %>   
+            <%= f.label :picture %><br />
+            <%= f.file_field :picture %>        
         </fieldset>
       </div>
 

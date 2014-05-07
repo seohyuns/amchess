@@ -15,4 +15,10 @@ Instructions for what needs to be done in this phase of the project can be found
 
 
 
-#### I am using a date picker to make this website have a more user friendly ui. Therefore this feature may prevent some cucumber tests from passing. 
+----
+ I am using a date picker to make this website have a more user friendly ui. Therefore this feature may prevent some cucumber tests from passing. 
+
+- If the number of registrations is equal to the max capacity then registration is not permitted. 
+-----Extra credit
+
+	my google map is not static and has an animation
