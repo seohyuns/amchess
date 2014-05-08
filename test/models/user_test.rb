@@ -29,6 +29,14 @@ class UserTest < ActiveSupport::TestCase
       delete_users
     end
 
+    should "is_admin work" do
+      assert_equal true, @mark_user.is_admin
+    end
+
+    should "is_instructor" do 
+      assert_equal false, @mark_user.is_instructor
+    end
+
     should "require users to have unique, case-insensitive usernames" do
       assert_equal "mheimann", @mark_user.username
       # try to switch to Alex's username 'tank'
@@ -62,6 +70,12 @@ class UserTest < ActiveSupport::TestCase
       assert @mark_user.role?(:admin)
       deny @mark_user.role?(:instructor)
     end
+    should "have working class method for authenication" do 
+      assert User.authenticate("tank", "secret")
+      deny User.authenticate("tank", "password")
+    end
+
+
 
   end
 end

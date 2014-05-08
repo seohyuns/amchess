@@ -30,15 +30,6 @@ accepts_nested_attributes_for :user, reject_if: ->(user) { user[:username].blank
     # camp.instructors
   end
 
-  def self.search(search)  
-    if search  
-      find(:all, :conditions => ['first_name LIKE ? || last_name LIKE ?', "%#{search}%"])  
-    else  
-      find(:all)  
-    end  
-  end  
-
-
 
   # callbacks
   before_save :reformat_phone

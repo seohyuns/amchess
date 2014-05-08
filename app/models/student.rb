@@ -24,11 +24,6 @@ class Student < ActiveRecord::Base
   before_destroy :is_never_destroyable
 
   # other methods
-  def self.search(search)
-    search_condition = "%" + search + "%"
-    find(:all, :conditions => ['first_name LIKE ? OR last_name LIKE ?', search_condition, search_condition])
-  end
-
   def name
     "#{self.last_name}, #{self.first_name}"
   end

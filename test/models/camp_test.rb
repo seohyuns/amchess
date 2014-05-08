@@ -2,6 +2,7 @@ require 'test_helper'
 
 class CampTest < ActiveSupport::TestCase
   # test relationships
+
   should belong_to(:curriculum)
   should have_many(:camp_instructors)
   should have_many(:instructors).through(:camp_instructors)
@@ -92,6 +93,8 @@ class CampTest < ActiveSupport::TestCase
     should "shows that there are four camps in in alphabetical order" do
       assert_equal ["Endgame Principles", "Mastering Chess Tactics", "Mastering Chess Tactics","Mastering Chess Tactics"], Camp.alphabetical.all.map{|c| c.curriculum.name}
     end
+
+
 
     should "shows that there are three active camps" do
       assert_equal 3, Camp.active.size

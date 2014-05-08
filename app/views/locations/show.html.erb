@@ -34,10 +34,12 @@
   <% end %>
 </p>
 
+<% if logged_in? && current_user.role?(:admin) %>
 <p>
 <%= link_to 'Edit', edit_location_path(@location), class: "button tiny radius" %> |
 <%= link_to 'Back', locations_path, class: "button tiny radius" %>
 </p>
+<% end %>
 </div> 
 
 

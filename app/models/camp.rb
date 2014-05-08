@@ -21,7 +21,6 @@ class Camp < ActiveRecord::Base
   validate :camp_is_not_a_duplicate, on: :create
   validate :max_students_not_greater_than_capacity
   validate :camp_can_be_deactivated
-  validate :registration_size_not_greater_than_capacity
 
   # scopes
   scope :alphabetical, -> { joins(:curriculum).order('name') }
@@ -46,14 +45,6 @@ class Camp < ActiveRecord::Base
   # class methods
   def self.openings
     Camp.active.chronological.to_a.select{|c| c.registrations.size < c.max_students}
-  end
-
-
-  def registration_size_not_greater_than_capacity
-    return true if self.registrations.empty? 
-    if self.registrations.size > self.max_students
-      errors.add(:base, "size is greater than the camp students allowed ")
-    end
   end
 
 

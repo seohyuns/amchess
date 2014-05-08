@@ -16,14 +16,10 @@ class Registration < ActiveRecord::Base
   validate :student_rating_appropriate_for_camp, on: :create
   validate :student_is_not_already_registered_to_another_camp_at_same_time, on: :create
 
-  
   # scopes
   scope :deposit_only, -> { where(payment_status: 'deposit') }
   scope :paid,         -> { where(payment_status: 'full') }
   scope :by_student,   -> { joins(:student).order('students.last_name, students.first_name') }
-
-
-
 
 
 

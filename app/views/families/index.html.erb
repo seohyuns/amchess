@@ -1,5 +1,5 @@
 <h1>Families</h1>
-
+<% unless @families.empty? %>
 <table>
   <thead>
     <tr>
@@ -29,52 +29,65 @@
 
   </tbody>
 </table>
+<% else %>
+    <h3>There are no active families to be displayed</h3>
+<% end %>
 
 <span class="paginate">
 <%= will_paginate @families, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
 </span>
 
 
-  <div class="small-4 columns">
+  
 
-<h1>Inactive Families</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Family Name</th> 
-      <th>Phone</th>
-      <th>Active</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="small-4 columns">
 
-  <tbody>
-<% @inactive_families.each do |family| %>
+<% unless @inactive_families.empty? %>
+  <h1>Inactive Families</h1>
+
+  <table>
+    <thead>
       <tr>
-      <td><%= link_to family.family_name, family_path(family) %></td>
-      <td><%= number_to_phone family.phone %></td>
-        <td><%= family.active == "true" ? "Inactive" : "Active" %></td>
-        <td><%= link_to 'Show', family %></td>
-        <td><%= link_to 'Edit', edit_family_path(family) %></td>
-        <td><%= link_to 'Destroy', family, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Family Name</th> 
+        <th>Phone</th>
+        <th>Active</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
+    </thead>
+
+    <tbody>
+  <% @inactive_families.each do |family| %>
+        <tr>
+        <td><%= link_to family.family_name, family_path(family) %></td>
+        <td><%= number_to_phone family.phone %></td>
+          <td><%= family.active == "true" ? "Inactive" : "Active" %></td>
+          <td><%= link_to 'Edit', edit_family_path(family) %></td>
+          <td><%= link_to 'Destroy', family, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+  <% end %>
+
+
+    </tbody>
+  </table>
+
+<% else %>
+    <h3>There are no inactive families to be displayed</h3>
 <% end %>
-
-
-  </tbody>
-</table>
 
 <span class="paginate">
 <%= will_paginate @inactive_families, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
 </span>
 
+
+
+<%= link_to 'New Family', new_family_path, class: "button tiny radius"  %>
+
 </div>
 
 
-<%= link_to 'New Family', new_family_path %>
 
 
 

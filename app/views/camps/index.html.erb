@@ -2,16 +2,16 @@
 <h1>Camps</h1>
 
 <div class="container_24">
-  <div class="grid_12" id = "content">
+  <div class="grid_13" id = "content">
     <!-- MAIN CONTENT GOES HERE -->
     <%= render :partial => "camps", locals: { status: "Upcoming", camps: @upcoming_camps } %>
     <p>&nbsp;</p>
   </div>
 
 
-  <div class="grid_6 push_5"  >
-    <!-- SIDEBAR CONTENT GOES HERE -->
-    <%= render :partial => "inactive_camps" %>
+  <div class="grid_5 push_5"  >
+
+      <%= render :partial => "inactive_camps" %>
 
   </div>
 </div>

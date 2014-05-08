@@ -28,11 +28,22 @@
 
 <% unless @family.students.nil? %>
 <p>
-  <strong>Students:</strong>
+  <strong>Students:</strong><br />
+  <%sum =0 %>
+  <%total =0%>
   <% for student in @students %>
-  	<%= student.first_name %>
-  	<%= student.last_name %>
+  	<%= student.proper_name %><br />
+    <% for reg in student.registrations %>
+      <% total += reg.camp.cost %>
+      <% if reg.payment_status = 'full' %>
+          <% sum += reg.camp.cost %>
+      <% elsif reg.payment_status = 'deposit' %>
+        <% sum  += 50 %>
+      <% end %>
+    <% end %>
   <% end %>
+  <strong>Payments received: $</strong><%= sum %><br />
+  <strong>Total Payment Balance: $</strong><%= total - sum %>
 </p>
 <p>
 <% end %>
@@ -48,5 +59,7 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_family_path(@family) %> |
-<%= link_to 'Back', families_path %>
+<p>
+<%= link_to 'Edit', edit_family_path(@family),class: "button tiny radius"  %> |
+<%= link_to 'Back', families_path,class: "button tiny radius"  %>
+</p>

@@ -26,12 +26,8 @@ class User < ActiveRecord::Base
     role == 'instructor'
   end
 
-  def role?(authorized_role)
-    return false if role.nil?
-    role.downcase.to_sym == authorized_role
-  end
 
-    def self.authenticate(username,password)
+  def self.authenticate(username,password)
     find_by_username(username).try(:authenticate, password)
   end
 

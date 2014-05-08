@@ -15,10 +15,22 @@ Instructions for what needs to be done in this phase of the project can be found
 
 
 
-----
- I am using a date picker to make this website have a more user friendly ui. Therefore this feature may prevent some cucumber tests from passing. 
+----TEST COVERAGE
 
+ - I added a is_instructor and is_admin as well as should_have_nest_attributes to the model and checked that I had full coverage.
+ However, I have gotten a low test coverage for methods and test that I did not write. The codes were being covered but suddenly stopped being covered with no changes made. For instance, my user test was 100% coverage and all passing and after a few hours it was not. However my geocoder hit its limit I wasn't able to fix the test coverage.
+
+---------Cucumber
+ -I am using a date picker to make this website have a more user friendly ui. Therefore this feature may prevent some cucumber tests from passing. 
+ - I hit the google api limit so my test coverage and cucumber test is not 100%
+
+
+--------------miscellaneous 
 - If the number of registrations is equal to the max capacity then registration is not permitted. 
+
+- Registrations can be made through the camp show page
+- Payment reports for students can also be seen in the camp show page 
+- Payment status for family can be seen on the family detail page 
 -----Extra credit
 
 	my google map is not static and has an animation

@@ -22,8 +22,6 @@ class Curriculum < ActiveRecord::Base
   before_destroy :is_never_destroyable
 
 
-
-
   private
   def max_rating_greater_than_min_rating
     # only testing 'greater than' in this method, so...

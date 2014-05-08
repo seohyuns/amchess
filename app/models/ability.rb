@@ -87,7 +87,10 @@ class Ability
 
   else
     can :read, Camp
+    can :read, Curriculum
+    can :read, Location
   end
+
 end
 
 
