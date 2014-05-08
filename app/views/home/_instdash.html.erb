@@ -82,8 +82,8 @@
 		  <thead>
 		    <tr>
 		      <th>Instructor</th>
-		      <th>Email</th>
 		      <th>Phone</th>
+		      <th>Email</th>
 		    </tr>
 		  </thead>
 
@@ -92,7 +92,7 @@
 		      <tr>
 		        <td><%= inst.name %></td>
 		        <td><%= inst.phone %></td>
-		        <td><%= inst.email %></td>
+		        <td><%= mail_to inst.email, inst.email, encode: "javascript" %></td>
 		      </tr>
 		    <% end %>
 		  </tbody>
