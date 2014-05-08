@@ -8,7 +8,7 @@
     <% for reg in @camp.registrations %>
       <strong><%= link_to reg.student.name, student_path(reg.student) %></strong> <br>      
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating: <%= reg.student.rating== 0? "Unrated" : reg.student.rating%><br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Balance Due: $<%= reg.payment_status == "deposit" ? reg.camp.cost - 50 : 0 %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Balance Due: $<%= reg.payment_status == "deposit" ? reg.camp.cost - 50 : 0 %><br />
       <% if logged_in? && current_user.role?(:admin) %>
         <% if reg.payment_status = 'full' %>
           <% i+= reg.camp.cost %>
@@ -16,13 +16,16 @@
           <% i += 50 %>
         <%end%>
       <% end %>
-
+     
+     <% if logged_in? && current_user.role?(:admin)%>
       <br />
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Undo Registration', camp_path(@camp), data: { confirm: 'Are you sure you want to unregister {#reg.student.proper_name} from this camp?' }, method: :delete, class: "button tiny radius alert" %>
             </br>
+        <% end %>
       <% end %>
+      <% if logged_in? && current_user.role?(:admin)%>
     <h2>Total Balance Due: $<%= i %></h2>
-
+      <% end %>
     </ul>
   </div>
 

@@ -12,17 +12,16 @@
     <!-- SIDEBAR CONTENT GOES HERE -->
     <%= render partial: 'camp_instructors' %>
 
-  <% if logged_in? && (current_user.role?(:admin) ||  current_user.role?(:instructor))%>
+  <% if logged_in? && current_user.role?(:admin)%>
     <% if @camp.registrations.size < @camp.max_students %>
         <%= render partial: 'registration_form' %>
     <% else%>
         <h3> Cannot Register Any More Students</h3>
-
-
-  <% end %>
+      <% end %>
+        <% end %>
     <br></br>
     <%= render partial: 'camp_students' %>
-    <% end %>
+
 
   </div>
 
