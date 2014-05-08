@@ -31,6 +31,9 @@ Instructions for what needs to be done in this phase of the project can be found
 - Registrations can be made through the camp show page
 - Payment reports for students can also be seen in the camp show page 
 - Payment status for family can be seen on the family detail page 
+
+
+-Car Pool: Student's ages are generated on the registration list on the camp show page
 -----Extra credit
 
 	my google map is not static and has an animation

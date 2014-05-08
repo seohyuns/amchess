@@ -6,9 +6,12 @@
     <ul class="side-nav">
             <% i = 0%>
     <% for reg in @camp.registrations %>
-      <strong><%= link_to reg.student.name, student_path(reg.student) %></strong> <br>      
+      <strong><%= link_to reg.student.name, student_path(reg.student) %></strong> <br> 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Age: <%= reg.student.age%><br />  
+      <% if logged_in? && (current_user.role?(:admin) || current_user.role?(:instructor))%> 
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating: <%= reg.student.rating== 0? "Unrated" : reg.student.rating%><br />
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Balance Due: $<%= reg.payment_status == "deposit" ? reg.camp.cost - 50 : 0 %><br />
+      <% end %>
       <% if logged_in? && current_user.role?(:admin) %>
         <% if reg.payment_status = 'full' %>
           <% i+= reg.camp.cost %>
