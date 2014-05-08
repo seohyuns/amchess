@@ -22,7 +22,7 @@ Instructions for what needs to be done in this phase of the project can be found
 
 ---------Cucumber
  -I am using a date picker to make this website have a more user friendly ui. Therefore this feature may prevent some cucumber tests from passing. 
- - I hit the google api limit so my test coverage and cucumber test is not 100%
+ - I hit the google api limit 
 
 
 --------------miscellaneous 
@@ -32,8 +32,8 @@ Instructions for what needs to be done in this phase of the project can be found
 - Payment reports for students can also be seen in the camp show page 
 - Payment status for family can be seen on the family detail page 
 
-
 -Car Pool: Student's ages are generated on the registration list on the camp show page
+
 -----Extra credit
 	my google map is not static and has an animation
 	online payment.....i tried.... :'(
